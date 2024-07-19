@@ -10,11 +10,18 @@
 // db.once('open', () => {
 //   console.log('Connected to MongoDB');
 // });
+const config = require("../config");
+
+const mysqlConfig = config.mysql;
+console.log(mysqlConfig.username); // Output: "root"
+console.log(mysqlConfig.host); // Output: "localhost"
+console.log(mysqlConfig.port); // Output: 3306
+console.log(mysqlConfig.password); // Output: ""
+console.log(mysqlConfig.database); // Output: "cca"
 
 // module.exports = db;
 
 const mysql = require("mysql2");
-const config = require("../config.json");
 
 // Create a connection pool
 const pool = mysql.createPool({
