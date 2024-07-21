@@ -25,10 +25,33 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: npm ci
-    - run: npm run build --if-present
-    - run: npm test
+        
+    # Install dependencies for backend
+    - name: Install dependencies for backend
+      working-directory: ./backend
+      run: npm ci
+      
+    # Build backend
+    - name: Build backend
+      working-directory: ./backend
+      run: npm run build --if-present
+      
+    # Run tests for backend
+    - name: Run tests for backend
+      working-directory: ./backend
+      run: npm test
 
+    # Install dependencies for frontend
+    - name: Install dependencies for frontend
+      working-directory: ./frontend
+      run: npm ci
+
+    # Build frontend
+    - name: Build frontend
+      working-directory: ./frontend
+      run: npm run build --if-present
+    
+    # Deploy using Docker Compose
   deploy:
     runs-on: self-hosted
     needs: build
