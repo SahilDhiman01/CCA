@@ -37,5 +37,5 @@ jobs:
 
     - name: Deploy using Docker Compose
       run: |
-        docker-compose pull
-        docker-compose up -d
+        docker-compose -f CCA/_work/CCA/CCA/docker-compose.yml pull
+        docker-compose -f CCA/_work/CCA/CCA/docker-compose.yml up -d
